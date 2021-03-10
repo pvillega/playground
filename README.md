@@ -20,6 +20,8 @@ Cargo allows you to install additional tooling, the following is recommended:
 - [Audit](https://github.com/rustsec/cargo-audit): Audit Cargo.lock files for crates with security vulnerabilities
   reported to the RustSec Advisory Database.
 
+You can also use the online playground: https://play.rust-lang.org
+
 ## Documentation
 
 You can run `rustup doc` to open a website with documentation about Rust, and links to teaching resources.
@@ -31,11 +33,19 @@ uses**
 
 The project contains a set of bash scripts for common commands, to facilitate using them in multiple CI/CD environments:
 
+- `chk.sh`: runs the `check` command (fast build)
 - `test.sh`: runs the tests
-- `coverage.sh`: runs coverage check on the application
-- `lint.sh`: runs Clippy with a flag to return error on warnings
-- `audit.sh`: runs an Audit check on dependencies, to find reported vulnerabilities
 - `preCommit.sh`: runs the formatter, linter, and tests for the project
+
+Other utilities:
+
+- `docs.sh`: opens the docs of the project, including all the libraries used
+- `coverage.sh`: runs coverage check on the application
+- `prod.sh`: builds a production binary (using optimised code)
+- `audit.sh`: runs an Audit check on dependencies, to find reported vulnerabilities
+- `fmt.sh`: runs `cargo fmt` to auto-format Rust code
+- `lint.sh`: runs Clippy with a flag to return error on warnings
+- `update.sh`: updates Cargo and dependencies in the Cargo.lock file
 
 ## Github actions
 
@@ -52,6 +62,10 @@ TBD
 ## Resources
 
 Multiple resources to learn from
+
+### Libraries
+
+Libraries (crates) for Rust are published to Crates, official package manager: https://crates.io
 
 ### Async
 
