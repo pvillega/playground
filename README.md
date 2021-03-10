@@ -35,6 +35,7 @@ The project contains a set of bash scripts for common commands, to facilitate us
 - `coverage.sh`: runs coverage check on the application
 - `lint.sh`: runs Clippy with a flag to return error on warnings
 - `audit.sh`: runs an Audit check on dependencies, to find reported vulnerabilities
+- `preCommit.sh`: runs the formatter, linter, and tests for the project
 
 ## Github actions
 

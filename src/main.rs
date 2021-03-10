@@ -1,6 +1,6 @@
-use std::io;
 use rand::Rng;
 use std::cmp::Ordering;
+use std::io;
 
 #[derive(Debug)]
 struct Person<'a> {
@@ -43,8 +43,8 @@ fn main() {
             Ordering::Greater => println!("Too big!"),
             Ordering::Equal => {
                 println!("You win!");
-                break
-            },
+                break;
+            }
         }
     }
 }
