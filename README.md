@@ -2,6 +2,15 @@
 
 Project to practice Rust 2018 concepts.
 
+Good resources to learn the language are:
+
+- [The book](https://doc.rust-lang.org/book/title-page.html)
+- [Rust by example](https://doc.rust-lang.org/stable/rust-by-example/index.html)
+- [Rust patterns](https://rust-unofficial.github.io/patterns/)
+
+A cheatsheet of [equivalent idioms in Scala and Rust](https://programming-idioms.org/cheatsheet/Scala/Rust) is
+available, no libraries used.
+
 ## Installing Rust
 
 It is recommended to avoid `brew` and instead to install Rust following these
@@ -11,7 +20,7 @@ It installs:
 
 - Rustup : the installation manager, allows you to update rust versions in your computer
 - Rustc: the compiler for Rust
-- Cargo: the package manager. See https://doc.rust-lang.org/cargo/ for more information
+- Cargo: the package manager. See [the Cargo book](https://doc.rust-lang.org/cargo/) for more information
 
 Cargo allows you to install additional tooling, the following is recommended:
 
@@ -19,6 +28,9 @@ Cargo allows you to install additional tooling, the following is recommended:
   Rust code.
 - [Audit](https://github.com/rustsec/cargo-audit): Audit Cargo.lock files for crates with security vulnerabilities
   reported to the RustSec Advisory Database.
+- [SCCache](https://github.com/mozilla/sccache): Caches build artefacts, makes building projects in Rust much faster.
+  Follow instructions to set up `cargo` to use it, by adding some values to `~/.cargo/config`
+- [UDeps](https://github.com/est31/cargo-udeps): Detects unused dependencies
 
 You can also use the online playground: https://play.rust-lang.org
 
@@ -36,10 +48,12 @@ The project contains a set of bash scripts for common commands, to facilitate us
 - `chk.sh`: runs the `check` command (fast build)
 - `test.sh`: runs the tests
 - `preCommit.sh`: runs the formatter, linter, and tests for the project
+- `docs.sh`: opens the docs of the project, including all the libraries used
 
 Other utilities:
 
-- `docs.sh`: opens the docs of the project, including all the libraries used
+- `deps.sh`: shows a tree of all project dependencies. See https://doc.rust-lang.org/cargo/commands/cargo-tree.html
+- `unused.sh`: shows a list of all unused dependencies
 - `coverage.sh`: runs coverage check on the application
 - `prod.sh`: builds a production binary (using optimised code)
 - `audit.sh`: runs an Audit check on dependencies, to find reported vulnerabilities
@@ -59,21 +73,6 @@ The following Github actions are included:
 
 TBD
 
-## Resources
-
-Multiple resources to learn from
-
-### Libraries
-
-Libraries (crates) for Rust are published to Crates, official package manager: https://crates.io
-
-### Async
-
-For `asynchronous` applications, besides the `async` syntax in Rust please check the following libraries:
-
-- [Tokio](https://crates.io/crates/tokio): An event-driven, non-blocking I/O platform for writing asynchronous
-  applications
-- [Async-std](https://crates.io/crates/async-std): Async version of the Rust standard library
 
 ## Contribution policy
 
