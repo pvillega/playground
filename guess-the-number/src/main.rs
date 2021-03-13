@@ -1,6 +1,7 @@
-use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
+
+use rand::Rng;
 
 #[derive(Debug)]
 struct Person<'a> {
