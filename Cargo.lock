@@ -7,21 +7,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
-name = "genepool"
-version = "0.1.0"
-dependencies = [
- "rand",
-]
-
-[[package]]
 name = "getrandom"
 version = "0.1.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8fc3cb4d91f53b50155bdcfd23f6a4c39ae1969c2ae85982b135750cccaf5fce"
 dependencies = [
- "cfg-if",
- "libc",
- "wasi",
+    "cfg-if",
+    "libc",
+    "wasi",
+]
+
+[[package]]
+name = "guess-the-number"
+version = "0.1.0"
+dependencies = [
+    "rand",
 ]
 
 [[package]]
@@ -74,8 +74,12 @@ version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ca3129af7b92a17112d59ad498c6f81eaf463253766b90396d39ea7a39d6613c"
 dependencies = [
- "rand_core",
+    "rand_core",
 ]
+
+[[package]]
+name = "sample-lib"
+version = "0.1.0"
 
 [[package]]
 name = "wasi"

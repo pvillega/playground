@@ -69,10 +69,19 @@ The following Github actions are included:
 - `audit-on-push.yml`: runs audit when the project is pushed to Github
 - `scheduled-audit.yml`: runs audit daily, as a cron job
 
-## Workspaces and Modules
+## Workspaces
 
-TBD
+Cargo allows working with [workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html) which are folders
+that group a series of Rust projects. This folder is an example of a workspace.
 
+To create a workspace, the root `Cargo.toml` must define which folders contain Rust projects to build. The projects
+themselves are full-fledged Rust projects, with their own `Cargo.toml` and dependencies.
+
+What the workspace gives us is the capability to compile and test all projects at once when running the commands from
+the root. That is, running `cargo build` in the root will trigger a build for all modules in the workspace.
+
+It also allows us to split our codebase into multiple independent libraries, reducing compile effort needed on code
+changes, as those changes will affect smaller modules, not the whole codebase.
 
 ## Contribution policy
 
