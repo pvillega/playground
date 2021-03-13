@@ -81,7 +81,9 @@ What the workspace gives us is the capability to compile and test all projects a
 the root. That is, running `cargo build` in the root will trigger a build for all modules in the workspace.
 
 It also allows us to split our codebase into multiple independent libraries, reducing compile effort needed on code
-changes, as those changes will affect smaller modules, not the whole codebase.
+changes, as those changes will affect smaller modules, not the whole codebase. Remember that dependencies can be set as
+relative paths as in `xyz = { path = "../one-lib" }` so that you don't need to publish the dependencies, you can just
+reference them.
 
 ## Contribution policy
 
