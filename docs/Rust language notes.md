@@ -1,5 +1,60 @@
 # Notes on Rust
 
+## Syntax
+
+### Casting
+
+You can cast between primitive types using `as`. Example: `let integer = decimal as u8;`
+
+Conversion between `enum` and `struct` types is handled by traits `From` and `Into`. You only need to implement `From`.
+If the conversion could fail, traits `TryFrom` and `TryInto` are available, which return a `Result` type as response.
+
+`String` is a special case, in which it uses the `ToString` trait. Instead of implementing it directly, you should just
+implement `Display` (see next section, `Displaying text`). To parse a `String` into a value, use the trait `FromStr`.
+
+### Displaying text
+
+On text-formatting macros like `format!` and `println!` a placeholder `{:?}` will use the `Debug` trait (with the option
+of `{:#?}` for pretty printing), while `{}` uses the `Display` trait to render the value.
+
+Formatting traits are listed [here](https://doc.rust-lang.org/std/fmt/#formatting-traits)
+
+You can derive `Debug` with `#[derive(Debug)]`, or implement it yourself. `Display` must be implemented.
+
+### Dynamic dispatch
+
+If you have a method that gets a trait as a parameter, like:
+
+```rust
+fn parse_read(r: impl Read) -> MyParseableType {
+  todo!();
+}
+```
+
+the compiler will create a copy of the method for each instance of Read in the codebase. This can increase the size of
+the executable without a massive performance benefit. Instead you can use a `dynamic dispatch` as follows:
+
+```rust
+fn parse_read(r: &mut dyn Read) -> MyParseableType {
+  todo!();
+}
+```
+
+This will generate a single copy of the method.
+
+## Code verification
+
+### Macro #[must_use]
+
+Types and functions can be annotated with `#[must_use]` in Rust. For a function, this makes the compiler emit a warning
+if a caller is not assigning the return value to a variable. For types, the warning is emitted every time the type is
+returned from a function and a caller is not using it.
+
+### Doc tests
+
+Rust allows you to write tests for a function as comments to that function, prefixed by `//!`. Use this on public api's
+by testing the happy case, as it provides a simple example of use and an additional test
+
 ## Smart pointers
 
 Smart pointers reference an object in the heap and handle the ownership of that object (erasure when out of scope, etc)
