@@ -1,5 +1,11 @@
 # Notes on Rust
 
+## Macros
+
+Macros are a very powerful resource for Rust programs. Some resources to learn about them:
+
+- https://blog.logrocket.com/macros-in-rust-a-tutorial-with-examples/
+
 ## Syntax
 
 ### Casting
@@ -89,6 +95,10 @@ There are multiple types of smart pointers:
 
 Rust provides tools for concurrency, which helps avoiding common pitfalls but they don't prevent deadlocks, so it may be
 better to rely on frameworks like `Tokio` to handle threads.
+
+`Streams` (like fs2 streams) are available in
+the [std library](https://docs.rs/futures/0.3.8/futures/stream/trait.Stream.html)
+They are iterators that return futures on each step.
 
 ### Threads
 

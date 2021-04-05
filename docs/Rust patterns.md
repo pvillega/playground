@@ -17,6 +17,54 @@ impl Days {
 }
 ```
 
+Note that you will likely need a `new` static method to be able to instantiate new instances of your newtype.
+
+If you are wrapping a `String`, implement the `Deref` trait for your newtype as that will allow the compiler to
+automatically turn your `&type` to a `&str` using the inner value. Same with `FromStr` and parsing. Just beware that
+this exposes the wrapped data!
+See:
+
+```rust
+pub struct PhoneNumber(String);
+
+use std::str::FromStr;
+
+impl FromStr for PhoneNumber {
+    type Err = Box<dyn std::error::Error>;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(PhoneNumber(s.to_string()))
+    }
+}
+
+use std::ops::Deref;
+
+impl Deref for PhoneNumber {
+    type Target = str;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let num = PhoneNumber::from_str("555-1234")?;
+
+    // Deref can be called when we take a reference. The function
+    // takes a &str and our type can Deref from &PhoneNumber to &str.
+    print_strings(&num);
+    Ok(())
+}
+
+fn print_strings(s: &str) {
+    println!("I've been asked to print {}", s);
+}
+```
+
+If you don't wrap a `String`, use `From` and `Into` traits instead. Note that you only need tom implement `From`.
+
+For integration with `Serde`, implement `TryFrom<T>` so that Serde doesn't bypass any validations you added.
+
 ## Associated types
 
 It's a way to avoid having to define generic parameters on all the call points involving a trait. We can define a trait
