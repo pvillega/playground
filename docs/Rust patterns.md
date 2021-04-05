@@ -121,3 +121,11 @@ fn double_positives<'a>(numbers: &'a Vec<i32>) -> impl Iterator<Item=i32> + 'a {
         .map(|x| x * 2)
 }
 ```
+
+## Avoid cloning
+
+It is common to try to avoid the borrow checker by using `clone()` but that is an anti-pattern. Cloning is acceptable in
+some cases, like `Rc` and `Arc` which handle the references intelligently. But, in general, it should be avoided as it
+it a hack around a legit issue.
+
+Clippy may alert about some unnecessary clones when run.
