@@ -18,3 +18,4 @@ More in current state of the art [in this blog post](https://alastairreid.github
 - [creusot](https://github.com/xldenis/creusot) is a tool for deductive verification of Rust code. It allows you to
   annotate your code with specifications, invariants and assertions and then check them formally, returning a proof your
   code satisfies its specification. 
+- [chalk](https://github.com/rust-lang/chalk) a prolog-like solver that allows you to query the type system

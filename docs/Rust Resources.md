@@ -68,7 +68,26 @@ execution than for webapps.
 - [AFL](https://github.com/rust-fuzz/afl.rs)
 - [Cargo Fuzz](https://github.com/rust-fuzz/cargo-fuzz)
 
-## Other
+## CI/CD
+
+### Caching
+
+- [scache](https://github.com/mozilla/sccache) provides a local cache to store compiled artefacts, like dependencies, to speed up builds
+
+### Minify executables
+
+- [upx GH](https://github.com/svenstaro/upx-action) a Github action to run [UPX](https://upx.github.io) on your binaries, to make them smaller
+
+## Apps
+
+## Desktop
+
+- [tauri](https://tauri.studio/en/) framework for desktop apps in Rust
+
+### Command line
+
+- [structopt](https://crates.io/crates/structopt) a command-line parser
+- [clap](https://crates.io/crates/clap) another command-line args parser
 
 ### Web server
 
@@ -88,13 +107,19 @@ execution than for webapps.
 
 - [Serde](https://serde.rs) a generic framework for not just Json, but even binary
 
-### Logging and Metrics
+### Logging, Tracing, and Metrics
 
 - [log](https://docs.rs/log/0.4.14/log/) provides an interface for logging, to be used in libraries, etc
 - [env_logger](https://crates.io/crates/env_logger) is a wrapper on `log`, configurable via env vars, for use in binary
   projects
 
 - [metered](https://crates.io/crates/metered) provides macros to measure program without altering the logic.
+
+Actix specific:
+- [actix-web-opentelemetry](https://docs.rs/actix-web-opentelemetry) and [tracing-opentelemetry](https://docs.rs/tracing-opentelemetry) can be used in tandem to ship our traces to an [OpenTelemetry](https://opentelemetry.io/) collector (e.g. [Jaeger](https://www.jaegertracing.io/)) for distributed tracing purposes
+- [tracing-honeycomb](https://crates.io/crates/tracing-honeycomb) pumps our span data into [Honeycomb.io](https://honeycomb.io/) for further analysis
+- [tracing-error](https://docs.rs/tracing-error) enriches our error types with a [SpanTrace](https://docs.rs/tracing-error/0.1.2/tracing_error/struct.SpanTrace.html) to ease troubleshooting
+
 
 ### SQL - ORM
 
@@ -110,3 +135,13 @@ execution than for webapps.
 
 - [Tera](https://github.com/Keats/tera) A template engine for Rust based on Jinja2/Django, used by Netlify
 
+## WebAssembly
+
+- [book](https://rustwasm.github.io/docs/book/) webassembly book
+- [wasm-bindgen](https://rustwasm.github.io/docs/wasm-bindgen/) official docs of bindgen
+
+## ML and AI
+
+### ML
+
+- [linfa](https://crates.io/crates/linfa) a ML framework for Rust
