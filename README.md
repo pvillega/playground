@@ -69,6 +69,18 @@ The following Github actions are included:
 - `audit-on-push.yml`: runs audit when the project is pushed to Github
 - `scheduled-audit.yml`: runs audit daily, as a cron job
 
+### Notes on performance for Rust CI/CD pipelines
+
+Based on [this post](https://matklad.github.io/2021/09/04/fast-rust-builds.html) some advice to make CI/CD faster in Rust:
+
+- Separate compilation (`cargo test --no-run --locked`) from tests (`cargo test -- --nocapture --quiet`) to know what is failing, and to fail fast
+- Disable incremental compilation in CI (with env var `CARGO_INCREMENTAL=0`) as a CI build is not incremental and that feature makes it slower
+- Disable debug for dev builds (<https://github.com/rust-analyzer/rust-analyzer/blob/48f84a7b60bcbd7ec5fa6434d92d9e7a8eb9731b/Cargo.toml#L6-L10>)
+- Add the warnings flag (<https://github.com/rust-analyzer/rust-analyzer/blob/3dae94bf2b3e496adb049da589c7efef272a39b8/.github/workflows/ci.yaml#L15>)
+- cache data in builds, but not just `.target` as that contains lot of useless stuff. Use a tool like [rust-cache](https://github.com/Swatinem/rust-cache) for smart caching
+- if using pull-requests, use something like [bors](https://bors.tech) to ensure all tests pass before a merge, to avoid broken master by mistake
+
+
 ## Workspaces
 
 Cargo allows working with [workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html) which are folders
