@@ -80,7 +80,6 @@ Based on [this post](https://matklad.github.io/2021/09/04/fast-rust-builds.html)
 - cache data in builds, but not just `.target` as that contains lot of useless stuff. Use a tool like [rust-cache](https://github.com/Swatinem/rust-cache) for smart caching
 - if using pull-requests, use something like [bors](https://bors.tech) to ensure all tests pass before a merge, to avoid broken master by mistake
 
-
 ## Workspaces
 
 Cargo allows working with [workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html) which are folders
