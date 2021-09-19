@@ -14,7 +14,7 @@ available, no libraries used.
 ## Installing Rust
 
 It is recommended to avoid `brew` and instead to install Rust following these
-instructions: https://www.rust-lang.org/tools/install
+instructions: <https://www.rust-lang.org/tools/install>
 
 It installs:
 
@@ -32,7 +32,7 @@ Cargo allows you to install additional tooling, the following is recommended:
   Follow instructions to set up `cargo` to use it, by adding some values to `~/.cargo/config`
 - [UDeps](https://github.com/est31/cargo-udeps): Detects unused dependencies
 
-You can also use the online playground: https://play.rust-lang.org
+You can also use the online playground: <https://play.rust-lang.org>
 
 ## Documentation
 
@@ -52,7 +52,7 @@ The project contains a set of bash scripts for common commands, to facilitate us
 
 Other utilities:
 
-- `deps.sh`: shows a tree of all project dependencies. See https://doc.rust-lang.org/cargo/commands/cargo-tree.html
+- `deps.sh`: shows a tree of all project dependencies. See <https://doc.rust-lang.org/cargo/commands/cargo-tree.html>
 - `unused.sh`: shows a list of all unused dependencies
 - `coverage.sh`: runs coverage check on the application
 - `prod.sh`: builds a production binary (using optimised code)
